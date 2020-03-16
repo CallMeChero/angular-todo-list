@@ -1,6 +1,6 @@
 <div class="app-admin-wrap layout-sidebar-large">
     <div>
-        <app-header-sidebar-large></app-header-sidebar-large>
+        <app-header></app-header>
     </div>
     <div class="main-content-wrap d-flex flex-column" >
         <div [@slideInAnimation]="o.isActivated ? o.activatedRoute : ''">
@@ -13,4 +13,3 @@
         </div>
     </div>
 </div>
-<app-search *ngIf="searchService.searchOpen"></app-search>

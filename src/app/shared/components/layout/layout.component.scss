@@ -1,0 +1,16 @@
+
+.module-loader {
+    position: fixed;
+    background: rgba(#ccc, .5);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 9;
+    .loader, .spinner {
+        position: fixed;
+        top: 45%;
+        left: calc(50% + 56px);
+        z-index: inherit;
+    }
+}

@@ -3,8 +3,14 @@ import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { LayoutComponent } from './layout/layout.component';
+import { HeaderComponent } from './layout/header/header.component';
+import { FooterComponent } from './layout/footer/footer.component';
 
 const components = [
+  LayoutComponent,
+  HeaderComponent,
+  FooterComponent,
 ];
 
 @NgModule({
@@ -17,4 +23,4 @@ const components = [
   declarations: components,
   exports: components
 })
-export class LayoutsModule { }
+export class ComponentsModule { }
