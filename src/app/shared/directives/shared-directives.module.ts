@@ -6,7 +6,7 @@ import { FullScreenWindowDirective } from './full-screen.directive';
   imports: [
     CommonModule
   ],
-  declarations: [ FullScreenWindowDirective ],
-  exports: [ FullScreenWindowDirective ]
+  declarations: [FullScreenWindowDirective],
+  exports: [FullScreenWindowDirective]
 })
 export class SharedDirectivesModule { }

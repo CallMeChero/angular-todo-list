@@ -4,15 +4,26 @@ import { ToastrModule } from 'ngx-toastr';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ComponentsModule } from './components/components.module';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { SharedDirectivesModule } from './directives/shared-directives.module';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: [],
   imports: [
     CommonModule,
     ToastrModule.forRoot(),
+    RouterModule,
     NgbModule,
     ComponentsModule,
-    AngularFontAwesomeModule
-  ]
+    AngularFontAwesomeModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgSelectModule,
+    SharedDirectivesModule
+  ],
+  declarations: [],
+  exports: []
+  
 })
 export class SharedModule { }

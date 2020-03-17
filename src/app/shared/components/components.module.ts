@@ -6,6 +6,8 @@ import { FormsModule } from '@angular/forms';
 import { LayoutComponent } from './layout/layout.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
+import { SharedDirectivesModule } from '../directives/shared-directives.module';
+import { SharedModule } from '../shared.module';
 
 const components = [
   LayoutComponent,
@@ -18,7 +20,8 @@ const components = [
     NgbModule,
     RouterModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    SharedDirectivesModule
   ],
   declarations: components,
   exports: components
