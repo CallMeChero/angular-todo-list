@@ -1,8 +1,8 @@
-<div class="app-admin-wrap layout-sidebar-large">
+<div class="app-admin-wrap">
     <div>
         <app-header></app-header>
     </div>
-    <div class="main-content-wrap d-flex flex-column" >
+    <main role="main" class="container">
         <div [@slideInAnimation]="o.isActivated ? o.activatedRoute : ''">
             <router-outlet #o="outlet"></router-outlet>
         </div>
@@ -11,5 +11,5 @@
         <div class="module-loader" *ngIf="moduleLoading">
             <div class="spinner spinner-bubble spinner-bubble-primary mr-3"></div>
         </div>
-    </div>
+    </main>
 </div>

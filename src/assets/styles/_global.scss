@@ -1,2 +1,15 @@
 @import 'colors';
 @import 'loader';
+@import 'breadcrumbs';
+
+
+html {
+    font-size: 16px;
+}
+
+body {
+    letter-spacing: .3px;
+    line-height: 1.6;
+    background: white;
+    overflow: hidden;
+}

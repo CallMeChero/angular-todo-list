@@ -8,7 +8,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpErrorInterceptor } from './shared/interceptors/http-error.interceptor';
 import { NgbDateNativeAdapter, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
-
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './shared/inmemory-db/inmemory-db.service';
 @NgModule({
   declarations: [
     AppComponent
@@ -19,6 +20,12 @@ import { RouterModule } from '@angular/router';
     SharedModule,
     AppRoutingModule,
     HttpClientModule,
+    // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
+    // and returns simulated server responses.
+    // Remove it when a real server is ready to receive requests.
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, { delay: 1000 } 
+    )
   ],
   providers: [
     {
