@@ -4,5 +4,5 @@ export interface ITodo {
     title: string;
     isCompleted: boolean;
     description: string;
-    dateCreated: Date;
+    dateCreated: Date | string;
 }

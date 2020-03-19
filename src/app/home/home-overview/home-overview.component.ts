@@ -28,16 +28,18 @@ export class HomeOverviewComponent  implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.columns = HEADER_ITEMS;
-    this.isLoading = false;
     this.getTodos();
   }
 
   getTodos() {
     this.homeService.getTodos().pipe(untilComponentDestroyed(this)).subscribe(
       responseData => {
+        this.isLoading = false;
         this.todos = responseData;
       }
     )
   }
+
+  navigateToDetails(id) {}
 
 }

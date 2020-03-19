@@ -11,7 +11,7 @@ import { PageNotFoundComponent } from './shared/components/page-not-found/page-n
       {
         path: 'home',
         component: LayoutComponent,
-        loadChildren: './home/home.module#HomeModule'
+        loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
       },
       {
         path: '',

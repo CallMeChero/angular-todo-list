@@ -9,7 +9,7 @@ import { HttpErrorInterceptor } from './shared/interceptors/http-error.intercept
 import { NgbDateNativeAdapter, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './shared/inmemory-db/inmemory-db.service';
+import { InMemoryDataService } from './shared/inmemory-db/in-memory-data.service';
 @NgModule({
   declarations: [
     AppComponent
@@ -24,7 +24,7 @@ import { InMemoryDataService } from './shared/inmemory-db/inmemory-db.service';
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.
     HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { delay: 1000 } 
+      InMemoryDataService, { delay: 1500 } 
     )
   ],
   providers: [
