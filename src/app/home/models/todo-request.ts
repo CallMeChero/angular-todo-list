@@ -1,4 +1,4 @@
-export interface ITodo {
+export interface ITodoRequest {
     id: number;
     name: string;
     title: string;

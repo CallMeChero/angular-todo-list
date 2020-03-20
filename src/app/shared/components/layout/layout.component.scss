@@ -1,30 +1,39 @@
-.app-admin-wrap {
-    width: 100%;
-    
-    .main-content-wrap {
-        width: 100%;
-        float: right;
-        margin-top: 0;
-        transition: all 0.24s ease-in-out;
-        padding: 0 2rem;
-        position: relative;
-        min-height: 80vh;
-        background: whitesmoke;
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+   
+.wrapper > * {
+    padding: 20px;
+}
 
-        .module-loader {
-            position: fixed;
-            background: rgba(#ccc, .5);
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            z-index: 9;
-            .loader, .spinner {
-                position: fixed;
-                top: 45%;
-                left: calc(50% + 56px);
-                z-index: inherit;
-            }
-        }
+.page-main {
+    display: flex;
+    overflow-y: auto;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 350px;
+    background: url('https://picsum.photos/g/1800/970/?random') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+   
+.page-main div {
+    max-width: 500px;
+}
+
+.page-footer {
+  position: absolute;
+  bottom: 100px;
+  width: 100%;
+  height: 2.5rem;
+}
+   
+@media screen and (min-width: 768px) {
+    .page-main {
+      padding-left: 90px;
     }
 }

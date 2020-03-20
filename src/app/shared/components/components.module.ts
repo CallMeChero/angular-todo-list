@@ -8,11 +8,15 @@ import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { SharedDirectivesModule } from '../directives/shared-directives.module';
 import { SharedModule } from '../shared.module';
+import { ModalConfirmationComponent } from './modal-confirmation/modal-confirmation.component';
+import { ModalConfirmExitComponent } from './modal-confirm-exit/modal-confirm-exit.component';
 
 const components = [
   LayoutComponent,
   HeaderComponent,
   FooterComponent,
+  ModalConfirmationComponent,
+  ModalConfirmExitComponent
 ];
 
 @NgModule({

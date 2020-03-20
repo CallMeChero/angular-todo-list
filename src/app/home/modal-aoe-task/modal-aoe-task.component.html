@@ -1,14 +1,12 @@
-<div class="col-lg-12 col-md-12 col-sm-12 mb-5 p-0 d-flex justify-content-between">
-  <h3 class="text-primary">Pregled zadataka</h3>
-  <button type="button" class="btn btn-outline-secondary btn-rounded" (click)="editTask()" *ngIf="!isEditMode">
-    <i class="fa fa-pencil"></i>
-  </button>
+<div class="modal-header">
+    <h4 class="modal-title text-primary" id="modal-title" *ngIf="row; else noRow">Uređivanje zadatka</h4>
+    <ng-template #noRow>
+        <h4 class="modal-title text-primary" id="modal-title">Dodavanje zadatka</h4>
+    </ng-template>
 </div>
- 
-<div class="row" [@slideInAnimation]="isEditMode ? isEditMode : ''">
-  <div *ngIf="isEditMode; else notEdit" class="col-sm-12 col-md-12 col-lg-12 mb-3">
+<div class="modal-body pb-0">
     <form [formGroup]="taskGroup" (ngSubmit)="onSubmit()" #myForm="ngForm">
-        <div class="row">
+        <div class="custom-card-body row">
             <div class="col-sm-12 col-md-12 col-lg-6 mb-3">
                 <label for="title" class="required">Naslov</label>
                 <input type="text" class="form-control" id="title" name="title" placeholder="Naslov zadatka"
@@ -52,7 +50,7 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-outline-secondary btn-rounded mr-auto" (click)="closeEdit()">
+            <button type="button" class="btn btn-outline-secondary btn-rounded mr-auto" (click)="modal.close()">
                 Odustani
             </button>
             <button type="submit" class="btn btn-primary btn-rounded">
@@ -60,59 +58,4 @@
             </button>
         </div>
     </form>
-  </div>
-  <ng-template #notEdit >
-    <div class="col-lg-12 col-md-12 col-sm-12 pl-0" *ngIf="todo">
-      <div class="card">
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">
-            Naslov: <strong>{{ todo.title }}</strong>
-          </li>
-          <li class="list-group-item">
-            Ime: <strong>{{ todo.name }}</strong>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div class="input-group" *ngIf="todo">
-      <div class="col-md-8 pl-0">
-        <div class="card text-center h-100 card-info">
-            <div class="card-block">
-                <h4 class="card-title"></h4>
-                <h2><i class="fa fa-quote-right fa-3x"></i></h2>
-            </div>
-            <div class="row p-2 no-gutters rounded">
-                <div class="col-12 rounded">
-                    <div class="card card-block text-info rounded-0 border-left-0 border-right-0 border-top-0 border-bottom-0">
-                        <h3>Opis</h3>
-                        <span class="small text-uppercase">{{ todo.description }}</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card text-center h-100 card-info">
-            <div class="card-block">
-                <h4 class="card-title"></h4>
-                <h2><i class="fa fa-clock-o fa-3x"></i></h2>
-            </div>
-            <div class="row p-2 no-gutters rounded">
-              <div class="col-6 rounded">
-                  <div class="card card-block text-info rounded-0 border-left-0 border-right-0 border-top-0 border-bottom-0">
-                      <h3>Datum</h3>
-                      <span class="small text-uppercase">{{ todo.dateCreated | date: 'dd.MM.yyyy' }}</span>
-                  </div>
-              </div>
-              <div class="col-6 rounded">
-                  <div class="card card-block text-info rounded-0 border-right-0 border-top-0 border-bottom-0">
-                      <h3>Završen</h3>
-                      <span class="small text-uppercase">{{ todo.isCompleted ? 'Da' : 'Ne' }}</span>
-                  </div>
-              </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </ng-template>
 </div>

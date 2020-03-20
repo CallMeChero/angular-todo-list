@@ -1,29 +1,65 @@
-<div class="breadcrumb">
-    <div class="col-lg-12 col-md-12 col-sm-12">
-        <h1 class="text-primary">Pregled zadataka</h1>
+<div class="col-lg-12 col-md-12 col-sm-12 pl-0">
+    <h3 class="text-primary">Pregled zadataka</h3>
+</div>
+
+<div class="separator-breadcrumb border-top mt-1"></div>
+
+<div class="col-lg-3 pl-0 my-3">
+    <div class="card mb-3">
+        <div class="card-body">
+            <div class="form-group">
+                <label for="name">Pretraživanje:</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" (keyup)='filterDatatable()' [(ngModel)]="searchValue"
+                        placeholder="Pretraži...">
+                    <div class="input-group-append">
+                        <button class="btn bg-transparent cross-button" (click)="removeSearchValue()"
+                            *ngIf="searchValue">
+                            <i class="i-Remove"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-<div class="col-lg-12 col-md-12 col-sm-12 p-0">
-    <div class="card o-hidden">
-        <ngx-datatable class="material" [rows]="todos" [sortType]="SortType.single"
-            [columnMode]="ColumnMode.force" [headerHeight]="50" [footerHeight]="50" [limit]="5" [rowHeight]="'auto'" 
-            [loadingIndicator]="isLoading"
-            [messages]="{
+
+<div class="col-lg-12 col-md-12 col-sm-12 d-flex justify-content-between my-3 p-0">
+    <button type="button" class="btn btn-primary btn-rounded" (click)="finishTasks()" *ngIf="selected && selected.length">Završi više</button>
+    <button type="button" class="btn btn-primary btn-rounded ml-auto" (click)="addOrEditTask()">Dodaj</button>
+</div>
+
+
+<div class="card o-hidden">
+    <div class="col-lg-12 col-md-12 col-sm-12 p-0">
+        <ngx-datatable class="material" [rows]="todos" [sortType]="SortType.single" [columnMode]="ColumnMode.force"
+            [headerHeight]="50" [footerHeight]="50" [limit]="5" [rowHeight]="'auto'" [rowClass]="getRowClass"
+            [loadingIndicator]="isLoading" [displayCheck]="displayCheck" [messages]="{
             emptyMessage:'Nema odabranih rezultata',
             totalMessage: 'ukupno',
-            selectedMessage: 'odabran'
-        }">
-
-            <ngx-datatable-column name="actions">
+            selectedMessage: 'odabranih i završenih'}" [selected]="selected" [selectionType]="SelectionType.checkbox"
+            [selectAllRowsOnPage]="false">
+            <ngx-datatable-column name="actions " [width]="250" [canAutoResize]="false">
                 <ng-template ngx-datatable-header-template>
-                    Mogućnosti
+                    Akcije
                 </ng-template>
                 <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
-                    <div class="m-btn-group m-btn-group--pill btn-group" role="group" aria-label="First group">
-                        <a type="button" class="btn btn-outline-primary btn-rounded"
-                            (click)="navigateToDetails(row.id)">Pregledaj</a>
+                    <div class="d-flex justify-content-between">
+                        <button type="button" class="btn btn-outline-primary btn-rounded" (click)="navigateToDetails(row.id)">
+                            <i class="fa fa-search-plus"></i>
+                        </button>
+                        <button type="button" class="btn btn-outline-secondary btn-rounded" (click)="addOrEditTask(row)">
+                            <i class="fa fa-pencil"></i>
+                        </button>
+                        <button type="button" class="btn btn-outline-danger btn-rounded" (click)="deleteTask(row)">
+                            <i class="fa fa-trash"></i>
+                        </button>
                     </div>
                 </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column [width]="50" [sortable]="false" [canAutoResize]="false" [draggable]="false"
+                [resizeable]="false" [headerCheckboxable]="true" [checkboxable]="true">
             </ngx-datatable-column>
 
             <ngx-datatable-column *ngFor="let col of columns; let i = index" [name]="col.name" [prop]="col.prop"
@@ -32,6 +68,12 @@
                 <ng-template ngx-datatable-header-template let-sort="sortFn">
                     <span (click)="sort()">
                         {{ col.name }}
+                    </span>
+                </ng-template>
+
+                <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row" *ngIf="col.prop == 'isCompleted'">
+                    <span>
+                        {{ value === true ? 'Da' : 'Ne'}}
                     </span>
                 </ng-template>
 

@@ -10,6 +10,8 @@ import { NgbDateNativeAdapter, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './shared/inmemory-db/in-memory-data.service';
+import { ModalConfirmationComponent } from './shared/components/modal-confirmation/modal-confirmation.component';
+import { ModalConfirmExitComponent } from './shared/components/modal-confirm-exit/modal-confirm-exit.component';
 @NgModule({
   declarations: [
     AppComponent
@@ -20,6 +22,7 @@ import { InMemoryDataService } from './shared/inmemory-db/in-memory-data.service
     SharedModule,
     AppRoutingModule,
     HttpClientModule,
+    NgbModule,
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.
@@ -33,9 +36,15 @@ import { InMemoryDataService } from './shared/inmemory-db/in-memory-data.service
       useClass: HttpErrorInterceptor,
       multi: true
     },
+    // croatian ngb date adapter
     { provide: NgbDateNativeAdapter, useClass: NgbDateNativeAdapter }
   ],
   bootstrap: [AppComponent],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  entryComponents: [
+    //shared throughout app
+    ModalConfirmationComponent,
+    ModalConfirmExitComponent
+  ]
 })
 export class AppModule { }

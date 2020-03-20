@@ -11,7 +11,10 @@ import { RouterModule } from '@angular/router';
 @NgModule({
   imports: [
     CommonModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({
+      timeOut: 7500,
+      progressBar: true
+    }),
     RouterModule,
     NgbModule,
     ComponentsModule,
