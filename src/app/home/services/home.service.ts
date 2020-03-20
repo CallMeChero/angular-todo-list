@@ -25,7 +25,6 @@ export class HomeService {
             map((res: ITodo[]) => {
                 const items = <ITodo[]>res
                 // reason I did this workaround way is because angular date pipe in html didn't work as it should
-                console.log(items)
                 items.forEach(item => item.dateCreated = moment(item.dateCreated).format('DD.MM.YYYY'));
                 return items;
             })
