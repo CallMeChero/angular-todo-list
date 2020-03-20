@@ -7,11 +7,11 @@ html {
 }
 
 body {
-    height: 100%;   
-    overflow: hidden;  /*makes the body non-scrollable (we will add scrolling to the sidebar and main content containers)*/
-    margin: 0px;  /*removes default style*/
-    box-sizing: border-box;
-    position: relative;
+    height:100%;
+    min-height: 100%;
+    background: #000000;
+    color: #FFFFFF;
+    position:relative;
 }
 
 .separator-breadcrumb {
