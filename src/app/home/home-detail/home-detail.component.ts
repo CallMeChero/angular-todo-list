@@ -29,7 +29,7 @@ export class HomeDetailComponent implements OnInit, OnDestroy, DeactivationGuard
   todo: ITodo;
   isEditMode: boolean = false;
   taskGroup: FormGroup;
-  isSubmited = false;
+  isSubmited: boolean = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -58,7 +58,7 @@ export class HomeDetailComponent implements OnInit, OnDestroy, DeactivationGuard
   // got to have it, even empty - due to untilComponentDestroyed
   ngOnDestroy() {   }
 
-  getById(todoId): void {
+  getById(todoId: number): void {
     this.homeService.getTodo(todoId).pipe(untilComponentDestroyed(this)).subscribe(
       data => {
         this.todo = data;
@@ -89,6 +89,7 @@ export class HomeDetailComponent implements OnInit, OnDestroy, DeactivationGuard
 
 
   onSubmit(): void {
+    // this will trigger invalid-feedback class in html
     if(this.taskGroup.invalid) {
       return;
     }
